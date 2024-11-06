@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%block content%}
+    <h1>Tareas</h1>
+    <a href="{% url 'crear_tarea' %}">
+      <button type="button">Agregar nueva tarea</button>
+    </a>
+    <ul>
+      {%for tarea in tareas%}
+      <li>
+        <h4>{{tarea.titulo}}</h4>
+        <p>{{tarea.descripcion}}</p>
+        <p>{{tarea.user.username}}</p>
+        <a href="{% url 'detalleTarea' tarea.id %}">Editar tarea</a>
+        <a href="{% url 'borrarTarea' tarea.id %}">Eliminar tarea</a>
+      </li>
+      {%endfor%}
+    </ul>
+
+    {%endblock%}
+  </body>
+</html>

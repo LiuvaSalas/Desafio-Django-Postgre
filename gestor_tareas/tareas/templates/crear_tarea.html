@@ -1,0 +1,21 @@
+{% extends 'layout/base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% block content %}
+    <h1>Formulario para nuevas tareas</h1>
+    <form action="{% url 'crear_tarea' %}" method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <!-- Esto mostrará todos los campos del formulario -->
+      <input type="submit" value="Guardar tarea" />
+    </form>
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %} {% endblock %}
+  </body>
+</html>
