@@ -12,3 +12,9 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+class SubTarea(models.Model):
+    descripcion = models.TextField(blank=True)
+    eliminada = models.BooleanField(default=False)
+    tarea_id = models.ForeignKey(Tarea, on_delete=models.CASCADE)
